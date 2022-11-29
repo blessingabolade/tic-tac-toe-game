@@ -1,0 +1,181 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC-TAC-TOE</title>
+
+        <!-- BOOTSTRAP CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+        <!-- Font Awsome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+
+    <div class="col-8 text-center m-auto mt-5" id="enterNames">
+        <h3 class="text-warning">ENTER PLAYER NAMES</h3>
+        <h6 class=" alert alert-warning" id="invalidName" style="display: none;">Invalid Player Names</h6>
+        <input type="text" placeholder="Player 1" id="pname1" class="form-control mb-3">
+        <input type="text" placeholder="Player 2" id="pname2" class="form-control mb-3">
+        <button class="btn btn-primary fw-bold" onclick="startGame()">START GAME</button>
+    </div>
+    <div id="displayGame">
+
+    </div>
+
+<body class="bg-danger">
+    <script>
+
+        
+
+        let player="X"
+        let scoreOfx = 0
+        let scoreOfo = 0
+        let xscore=false
+        let oscore=false
+
+        
+        const startGame = () =>{
+            if(pname1.value=="" || pname2.value==""){
+                invalidName.style.display="block"
+            }else{
+                let player1 = pname1.value
+                let player2 = pname2.value
+                enterNames.style.display="none"
+                displayGame.innerHTML=` 
+        <div class="d-sm-flex m-auto mt-5">
+            <div id="container" class="m-auto mt-3 col-7 h-100 col-sm-4 col-md-3 col-lg-2 row">
+                <h3 class="text-center bg-warning rounded" id="playerVersus">${player1} vs ${player2}</h3>
+                <h3 class="text-center bg-light rounded p-2" style="display:none; color:red"  id="notifyPlayer1" >${player1} scores.</h3>
+                <h3 class="text-center bg-light rounded p-2" style="display:none; color:blue" id="notifyPlayer2" >${player2} scores.</h3>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height:60px; line-height: 55px;" id="box1" onclick="play(event)" ></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box2" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px;line-height: 55px;" id="box3" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box4" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box5" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box6" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box7" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box8" onclick="play(event)"></div>
+                <div class="bg-warning text-center fs-1 fw-bolder col-4 border border-danger rounded" style="height: 60px; line-height: 55px;" id="box9" onclick="play(event)"></div>
+            </div><br>
+
+            <div class="col-10 col-lg-4 col-sm-4 m-auto bg-warning rounded border border-dark" id="scoreboard">
+                <h1 class="text-center mt-3">SCORE-BOARD</h1>
+                <div class="fs-1 text-center fw-bolder text-uppercase" style="color:red"> ${player1} (X) : <span id="scorex"> 0</span></div>
+                <div class="fs-1 text-center fw-bolder text-uppercase" style="color:blue"> ${player2} (O) : <span id="scoreo"> 0</span><div>
+                <button class="btn btn-primary fw-bold" onclick="cont()">CONTINUE <i class="fa-solid fa-play"></i> </button></div>
+                <button class="btn btn-danger mb-2 fw-bold" onclick="restart()">RESTART <i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        </div>
+ 
+    </div>
+                `
+            }
+            
+        }
+
+        const play =(e) =>{
+            if (player=="X" && e.target.innerText==""){
+                e.target.style.color="red"     
+                e.target.innerText = player
+                player ="O"
+            }else if(player=="O" && e.target.innerText==""){
+                e.target.style.color="blue"
+                e.target.innerText = player
+                player ="X"
+            }
+            doMe()
+        }
+
+        
+function doMe() {
+	            if ((box1.innerText=="X" && box4.innerText=="X" && box7.innerText=="X") ||
+	                (box2.innerText=="X" && box5.innerText=="X" && box8.innerText=="X") || 
+	                (box3.innerText=="X" && box6.innerText=="X" && box9.innerText=="X") || 
+	                (box1.innerText=="X" && box2.innerText=="X" && box3.innerText=="X") || 
+	                (box4.innerText=="X" && box5.innerText=="X" && box6.innerText=="X") ||
+	                (box7.innerText=="X" && box8.innerText=="X" && box9.innerText=="X") ||
+	                (box1.innerText=="X" && box5.innerText=="X" && box9.innerText=="X") ||
+	                (box3.innerText=="X" && box5.innerText=="X" && box7.innerText=="X")){
+	                    xscore = true
+                        oscore = false
+                        if ( player !=="" ) {
+                        console.log ("X win")
+                        scoreOfx++
+	                    scorex.innerText = scoreOfx
+                        notifyPlayer1.style.display="block"
+                        playerVersus.style.display="none"
+
+                        }
+                        player =""
+	                }
+	                else if((box1.innerText=="O" && box4.innerText=="O" && box7.innerText=="O") ||
+	                (box2.innerText=="O" && box5.innerText=="O" && box8.innerText=="O") || 
+	                (box3.innerText=="O" && box6.innerText=="O" && box9.innerText=="O") || 
+	                (box1.innerText=="O" && box2.innerText=="O" && box3.innerText=="O") || 
+	                (box4.innerText=="O" && box5.innerText=="O" && box6.innerText=="O") ||
+	                (box7.innerText=="O" && box8.innerText=="O" && box9.innerText=="O") ||
+	                (box1.innerText=="O" && box5.innerText=="O" && box9.innerText=="O") ||
+	                (box3.innerText=="O" && box5.innerText=="O" && box7.innerText=="O")){
+	                    oscore = true
+                        xscore = false
+                        if (player !=="") {
+                            console.log ("O win")
+                            scoreOfo++ 
+	                        scoreo.innerText=scoreOfo
+                            notifyPlayer2.style.display="block"  
+                            playerVersus.style.display="none "
+
+                        }
+                        player =""   
+	            }
+            }	
+
+            const cont = ()=>{
+                if (xscore==true){
+                    player = "O"
+                }
+                else if (oscore==true){
+                    player = "X"
+                }
+                box1.innerText = ""
+                box2.innerText = ""
+                box3.innerText = ""
+                box4.innerText = ""
+                box5.innerText = ""
+                box6.innerText = ""
+                box7.innerText = ""
+                box8.innerText = ""
+                box9.innerText = ""
+                notifyPlayer1.style.display="none"
+                notifyPlayer2.style.display="none"
+                playerVersus.style.display="block"
+            }
+
+        const restart=()=>{
+            var reset = confirm("Are you sure to restart this game?. All game data will be lost.")
+            if (reset==true){
+            box1.innerText= ""
+            box2.innerText= ""
+            box3.innerText= ""
+            box4.innerText= ""
+            box5.innerText= ""
+            box6.innerText= ""
+            box7.innerText= ""
+            box8.innerText= ""
+            box9.innerText= ""
+            player ="X"
+            scoreo.innerText="0"
+            scorex.innerText="0"
+            scoreOfx = 0
+            scoreOfo = 0
+            notifyPlayer1.style.display="none"
+            notifyPlayer2.style.display="none"
+            playerVersus.style.display="block"
+            }
+        }
+    </script>
+</body>
+</html>           
