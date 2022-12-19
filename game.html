@@ -99,6 +99,7 @@
     let scoreOfo = 0
     let xscore = false
     let oscore = false
+    let drawGame = false
 
     // controls playing of the game
     const play = (e) => {
@@ -156,10 +157,17 @@
             }
             player = ""
         }
+        if(box1.innerText!=="" && box2.innerText!=="" && box3.innerText!=="" && box4.innerText!=="" && box5.innerText!=="" && box6.innerText!=="" && box7.innerText!=="" && box8.innerText!=="" && box9.innerText!==""){
+        drawGame= true
+        playerVersus.innerText="DRAW GAME"
+        }
     }
 
     // Continue game after a player has won
     const continueGame = () => {
+        if (drawGame){
+        playerVersus.innerHTML = `${player1}<span class="text-danger text-lowercase"> vs </span>${player2}`
+        }
         if (xscore == true) {
             player = "O"
         }

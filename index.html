@@ -9,7 +9,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="./logo.ico" />
-    
+
     <!-- BOOTSTRAP CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -19,24 +19,26 @@
 
 </head>
 <style>
-    input{
-        border: 0!important;
+    input {
+        border: 0 !important;
         outline: 0;
         box-shadow: none;
     }
 </style>
+
 <body class="bg-danger" id="body">
     <div class="col-8 text-center m-auto mt-5" id="enterNames">
         <h3 class="text-warning">ENTER PLAYER NAMES</h3>
-        <h6 class=" alert alert-danger" id="invalidName" style="display: none;"> <i class="fa-solid fa-triangle-exclamation"></i> Invalid Player Names </h6>
+        <h6 class=" alert alert-danger" id="invalidName" style="display: none;"> <i
+                class="fa-solid fa-triangle-exclamation"></i> Invalid Player Names </h6>
         <div class="form-floating mb-3">
             <input type="text" placeholder="Player 1" id="pname1" class="form-control mb-3">
             <label for="pname1" class="text-muted">Player 1</label>
-          </div>
-          <div class="form-floating mb-3">
+        </div>
+        <div class="form-floating mb-3">
             <input type="text" placeholder="Player 2" id="pname2" class="form-control mb-3">
             <label for="pname2" class="text-muted">Player 2</label>
-          </div>
+        </div>
         <button class="btn btn-primary fw-bold" onclick="startGame()">START GAME</button>
     </div>
 </body>
@@ -52,7 +54,7 @@
         if (checkNameValidation) {
             localStorage.setItem("player1Name", player1)
             localStorage.setItem("player2Name", player2)
-            window.location="game.html"
+            window.location = "game.html"
         } else {
             console.log(checkNameValidation)
             invalidName.style.display = "block"
