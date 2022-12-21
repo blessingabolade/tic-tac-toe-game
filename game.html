@@ -80,7 +80,6 @@
             let validteName = /^([\w]{3,10})$/
             let checkNameValidation = validteName.test(player1)
             if (checkNameValidation) {
-                console.log(localStorage.player1Name)
                 playerVersus.innerHTML = `${player1}<span class="text-danger text-lowercase"> vs </span>${player2}`
                 player1Name.innerText = ` ${player1} (X) :`
                 player2Name.innerText = ` ${player2} (O) :`
@@ -128,7 +127,6 @@
             xscore = true
             oscore = false
             if (player !== "") {
-                console.log("X win")
                 scoreOfx++
                 scorex.innerText = scoreOfx
                 notifyPlayer1.innerText = `${player1} score's`
@@ -148,7 +146,6 @@
             oscore = true
             xscore = false
             if (player !== "") {
-                console.log("O win")
                 scoreOfo++
                 scoreo.innerText = scoreOfo
                 notifyPlayer2.innerText = `${player2} score's`
